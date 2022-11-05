@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const upload = require("../middleware/multer");
-const itemsController = require("../controllers/item");
+const itemsController = require("../controllers/items");
 const { ensureAuth } = require("../middleware/auth");
 
-//Post Routes
+//Item Routes
 //Since linked from server js treat each path as:
-//post/:id, post/createPost, post/likePost/:id, post/deletePost/:id
+//item/:id, item/createItem, item/likeItem/:id, item/deleteItem/:id
 router.get("/:id", ensureAuth, itemsController.getItem);
 
 //Enables user to create post w/ cloudinary for media uploads

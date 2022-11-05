@@ -15,6 +15,14 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
+  },
+  getFeed: async (req, res) => {
+    try {
+      const items = await Item.find().sort({ createdAt: "desc" }).lean();
+      res.render("feed.ejs", { items: items });
+    } catch (err) {
+      console.log(err);
+    }
   },  
   getItem: async (req, res) => {
     try {
