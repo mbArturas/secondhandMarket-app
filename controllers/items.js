@@ -48,6 +48,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         description: req.body.description,
+        category: req.body.category,
         price: req.body.price,
         likes: 0,
         user: req.user.id,

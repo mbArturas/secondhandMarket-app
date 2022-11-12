@@ -19,6 +19,10 @@
                 <textarea class="form-control" id="description" name="description"></textarea>
               </div>
               <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category" name="category">
+              </div>
+              <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
                 <input type="text" class="form-control" id="price" name="price">
               </div>
@@ -38,6 +42,7 @@
               <h2><%= items[i].name%></h2>
               <img class="img-fluid" src="<%= items[i].image%>">
               <p><%= items[i].description%></p>
+              <p><%= items[i].category%></p>
               <p><%= items[i].price%></p>
             </a>
           </li>
