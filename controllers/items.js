@@ -37,6 +37,18 @@ module.exports = {
       console.log(err);
     }
   },
+  getItemToEdit: async (req, res) => {
+    try {
+      //id parameter comes from the post routes
+      //router.get("/:id", ensureAuth, postsController.getPost);
+      //http://localhost:2121/post/631a7f59a3e56acfc7da286f
+      //id === 631a7f59a3e56acfc7da286f
+      const item = await Item.findById(req.params.id).lean();      
+      res.render("edit.ejs", { item: item, user: req.user});
+    } catch (err) {
+      console.log(err);
+    }
+  },
   createItem: async (req, res) => {
     try {
       // Upload image to cloudinary
@@ -71,6 +83,24 @@ module.exports = {
       res.redirect(`/item/${req.params.id}`);
     } catch (err) {
       console.log(err);
+    }
+  },
+  editItem: async (req, res) => {
+    try{
+        let itemToEdit = await Item.findById(req.params.id).lean()   
+
+        if(itemToEdit.user != req.user.id) {
+            res.redirect('/feed')
+        } else {
+        itemToEdit = await Item.findOneAndUpdate({_id: req.params.id }, req.body, {
+            new: true,
+            runValidators: true,
+        })
+
+        res.redirect(`/item/${req.params.id}`)
+        }
+    } catch (err) {
+        console.error(err)
     }
   },
   deleteItem: async (req, res) => {

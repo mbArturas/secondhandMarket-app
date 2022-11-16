@@ -1,0 +1,36 @@
+<%- include('partials/header') -%>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-6">
+                <div class="mt-5">
+                    <h2>Edit a item</h2>
+                    <form action="/item/createItem" enctype="multipart/form-data" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="<%= item.name %>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description"><%= item.description %></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <input type="text" class="form-control" id="category" name="category" value="<%= item.category %>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="text" class="form-control" id="price" name="price" value="<%= item.price %>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="imgUpload" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="imageUpload" name="file">
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+    <%- include('partials/footer') -%>

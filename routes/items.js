@@ -9,13 +9,16 @@ const { ensureAuth } = require("../middleware/auth");
 //item/:id, item/createItem, item/likeItem/:id, item/deleteItem/:id
 router.get("/:id", ensureAuth, itemsController.getItem);
 
-//Enables user to create post w/ cloudinary for media uploads
+//Enables user to create item w/ cloudinary for media uploads
 router.post("/createItem", upload.single("file"), itemsController.createItem);
 
-//Enables user to like post. In controller, uses POST model to update likes by 1
+//Enables user to like item. In controller, uses POST model to update likes by 1
 router.put("/likeItem/:id", itemsController.likeItem);
 
-//Enables user to delete post. In controller, uses POST model to delete post from MongoDB collection
+//Enables user to edit item. In controller, uses POST model to update item
+router.get("/edit/:id", itemsController.getItemToEdit);
+
+//Enables user to delete item. In controller, uses POST model to delete item from MongoDB collection
 router.delete("/deleteItem/:id", itemsController.deleteItem);
 
 module.exports = router;
