@@ -16,7 +16,10 @@ router.post("/createItem", upload.single("file"), itemsController.createItem);
 router.put("/likeItem/:id", itemsController.likeItem);
 
 //Enables user to edit item. In controller, uses POST model to update item
-router.get("/edit/:id", itemsController.getItemToEdit);
+router.get("/edit/:id", ensureAuth, itemsController.getItemToEdit);
+
+//Enables user to edit item. In controller, uses POST model to update item
+router.put("/:id", ensureAuth, itemsController.editItem);
 
 //Enables user to delete item. In controller, uses POST model to delete item from MongoDB collection
 router.delete("/deleteItem/:id", itemsController.deleteItem);

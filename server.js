@@ -35,7 +35,13 @@ app.use(express.json());
 app.use(logger("dev"));
 
 //Use forms for put / delete
-app.use(methodOverride("_method"));
+app.use(methodOverride(function (req, res) {
+    if (req.body && typeof req.body === "object" && "_method" in req.body) {
+      let method = req.body._method
+      delete req.body._method
+      return method
+    }
+}));
 
 // Setup Sessions - stored in MongoDB
 app.use(
