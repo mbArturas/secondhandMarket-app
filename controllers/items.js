@@ -24,6 +24,16 @@ module.exports = {
       console.log(err);
     }
   },  
+  getFeedByCategory: async (req, res) => {
+    try {
+      const items = await Item.find({ category: "DVD" })
+        .sort({ createdAt: "desc" })
+        .lean();
+      res.render("category.ejs", { items: items });
+    } catch (err) {
+      console.log(err);
+    }
+  },  
   getItem: async (req, res) => {
     try {
       //id parameter comes from the post routes
