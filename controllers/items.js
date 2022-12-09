@@ -25,8 +25,9 @@ module.exports = {
     }
   },  
   getFeedByCategory: async (req, res) => {
-    try {
-      const items = await Item.find({ category: "DVD" })
+    const category = req.params.category
+    try {      
+      const items = await Item.find({ category: category })
         .sort({ createdAt: "desc" })
         .lean();
       res.render("category.ejs", { items: items });
