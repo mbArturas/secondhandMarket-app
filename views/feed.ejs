@@ -1,15 +1,17 @@
 <%- include('partials/header') -%>
   <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
+    <div class="row py-lg-6">
+      <div class="col-lg-8 col-md-10 mx-auto">
         <h1 class="fw-light">Categories</h1>
         <p>
-          <a href="/feed/CD" class="col-3 btn btn-primary"> CD</a>
-          <a href="/feed/DVD" class="col-3 btn btn-primary"> DVD</a>
-          <a href="/feed/VHS" class="col-3 btn btn-primary"> VHS</a>
-          <a href="/feed/BOOKS" class="col-3 btn btn-primary"> Books</a>
-          <a href="/feed/MAGAZINE" class="col-3 btn btn-primary"> Magazine</a>
-          <a href="/feed/OTHER" class="col-3 btn btn-primary"> Other</a>
+          <a href="/feed/CD" class="col-2 btn btn-sm btn-info"> CD</a>
+          <a href="/feed/DVD" class="col-2 btn btn-sm btn-info"> DVD</a>
+          <a href="/feed/VHS" class="col-2 btn btn-sm btn-info"> VHS</a>         
+        </p>
+        <p>
+          <a href="/feed/Book" class="col-2 btn btn-sm btn-info"> Books</a>
+          <a href="/feed/Magazine" class="col-2 btn btn-sm btn-info"> Magazine</a>
+          <a href="/feed/Other" class="col-2 btn btn-sm btn-info"> Other</a>
         </p>
       </div>
     </div>
@@ -21,13 +23,7 @@
               <a href="/item/<%= items[i]._id%>">
                 <img class="img-fluid img-thumbnail" src="<%= items[i].image%>">
                 </a>
-                <p class="card-text">Description</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a class="btn btn-sm btn-outline-secondary" href="/item/<%= items[i]._id%>">View</a>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
+                <p class="card-text"><%= items[i].description%></p>                 
             </div>                
           </div>                           
         <% } %>            
