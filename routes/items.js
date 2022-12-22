@@ -7,7 +7,7 @@ const { ensureAuth } = require("../middleware/auth");
 //Item Routes
 //Since linked from server js treat each path as:
 //item/:id, item/createItem, item/likeItem/:id, item/deleteItem/:id
-router.get("/:id", ensureAuth, itemsController.getItem);
+router.get("/:id", itemsController.getItem);
 
 //Enables user to create item w/ cloudinary for media uploads
 router.post("/createItem", upload.single("file"), itemsController.createItem);
